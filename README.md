@@ -1,5 +1,25 @@
 Part 1: The Modern Heavyweights (Languages 1–20).
 
+1. Python
+File: src/001_hello.py
+
+Python
+print("Hello World")
+The Breakdown:
+
+Created By: Guido van Rossum (1991).
+
+Type: High-level, Interpreted, General-purpose.
+
+The Story: Python was named after Monty Python’s Flying Circus, not the snake. It was designed to be highly readable, often using English keywords where other languages use punctuation.
+
+Usage: It is currently the world's most popular language for Data Science, AI, and Machine Learning.
+
+Who Uses It: Google (built their original crawler in it), Netflix (recommendation algorithms), and NASA (processing images from the James Webb Telescope).
+
+Special Power: "Pseudocode that runs." It enforces indentation (whitespace), meaning messy code literally won't run.
+
+
 2. JavaScript
 File: src/002_hello.js
 JavaScript
