@@ -1,6 +1,32 @@
 # Mega Hello World: 100 Languages, One Project
 
+<<<<<<< HEAD
 Welcome to the ultimate "Hello World" collection. This repository features 100 different programming languages, ranging from the modern heavyweights to esoteric madness. Each entry provides a technical profile, historical context, and an analysis of its strengths and weaknesses.
+=======
+1. Python
+File: src/001_hello.py
+
+Python
+print("Hello World")
+The Breakdown:
+
+Created By: Guido van Rossum (1991).
+
+Type: High-level, Interpreted, General-purpose.
+
+The Story: Python was named after Monty Python’s Flying Circus, not the snake. It was designed to be highly readable, often using English keywords where other languages use punctuation.
+
+Usage: It is currently the world's most popular language for Data Science, AI, and Machine Learning.
+
+Who Uses It: Google (built their original crawler in it), Netflix (recommendation algorithms), and NASA (processing images from the James Webb Telescope).
+
+Special Power: "Pseudocode that runs." It enforces indentation (whitespace), meaning messy code literally won't run.
+
+
+2. JavaScript
+File: src/002_hello.js
+JavaScript
+>>>>>>> 91cf9b5247e0939a29a40ec50b8a3169e31d01fd
 
 ---
 
@@ -3194,6 +3220,7 @@ END
 - **Typing**: Static, Strong.
 - **Runtime/Platform**: Various Mainframes.
 
+<<<<<<< HEAD
 **The Story & Purpose**:
 Algol 68 was designed to be a rigorous, mathematically sound successor to Algol 60. It was extremely advanced, featuring operator overloading, user-defined types, and concurrency—concepts that wouldn't become mainstream for decades. It was unfortunately too complex for most compilers of the era.
 
@@ -3236,3 +3263,13 @@ This is the final language in the collection, dedicated to the meme that Arch Li
 
 - **Pros**: 100% accurate to the meme.
 - **Cons**: Verbose; annoying after the first three lines; zero utility.
+=======
+i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw
+(Note: This goes on for hundreds of iterations to manipulate the pointer, similar to Brainfuck)
+The Breakdown:
+    • Created By: Overdesh (GitHub User).
+    • Type: Esoteric / Meme.
+    • The Story: The ultimate flex. The language is purely comprised of the phrase "i use arch btw".
+    • Usage: Establishing dominance in Linux forums.
+    • Special Power: It forces you to type the meme over and over again to get anything done.
+>>>>>>> 91cf9b5247e0939a29a40ec50b8a3169e31d01fd
