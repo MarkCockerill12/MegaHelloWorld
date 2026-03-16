@@ -1,4 +1,5 @@
 -module(hello).
--export([start/0]).
-start() ->
+-export([main/1]).
+
+main(_Args) ->
     io:fwrite("Hello World~n").
