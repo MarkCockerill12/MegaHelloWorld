@@ -1,2 +1,2 @@
-# (Vigil is Python-based but with consequences)
-print("Hello World")
+def main():
+    print('Hello World')

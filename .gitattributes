@@ -1,0 +1,4 @@
+# Sources run inside a Linux container: CRLF breaks make, shell and Whitespace
+* text=auto eol=lf
+*.png binary
+*.ws -text

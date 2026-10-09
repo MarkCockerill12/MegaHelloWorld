@@ -1,2 +1,18 @@
 elm-stuff/
 elm.json
+__pycache__/
+
+# Build artifacts left behind by the runner
+src/tmp_out*
+src/tmp.*
+src/*.o
+src/*.exe
+src/*.jar
+src/*.class
+src/*.ali
+src/*.icx
+src/Main.hx
+src/hello_nim*
+src/hello.*
+src/hello
+src/.apl.history

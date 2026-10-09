@@ -4,6 +4,26 @@ Welcome to the ultimate "Hello World" collection. This repository features 100 d
 
 ---
 
+## Running the Programs
+
+Everything runs inside a Docker image that bundles the toolchains, so Docker is the only requirement:
+
+```bash
+python3 runner.py        # interactive prompt
+python3 runner.py 42     # run program number 42
+python3 runner.py all    # run everything and print a summary
+```
+
+The first run builds the image, which takes a while. Each program is reported as one of:
+
+- **Success**: the program was compiled or interpreted and exited cleanly.
+- **Error**: the toolchain or the program failed.
+- **Skipped**: there is no working implementation of the language to run it with, so the source is included for reading only. This applies to ABC, B, Haifu and Hodor.
+
+Most languages use their real compiler or interpreter. Languages whose original tools are gone or were never packaged are run by the small interpreters in `esolangs.py` and `interpreters/`: Befunge, Chicken, FALSE, Glass, I Use Arch Btw, Malbolge, Omgrofl, Ook!, Piet, Unlambda, Whitespace and ZOMBIE (a subset).
+
+---
+
 ## Part 1: The Modern Heavyweights (1–20)
 
 ### 1. Python
@@ -1041,7 +1061,7 @@ Prolog (Programmation en Logique) is the benchmark for logic programming. Instea
 **Key Use Cases**:
 
 - **Expert Systems**: Diagnosing medical or mechanical issues.
-- **Lexical Analysis**: Parsing complex natural languages.
+- **Natural Language Processing**: Parsing complex natural languages.
 - **Semantic Web**: Reasoning about structured data.
 
 **Pros & Cons**:
@@ -1204,7 +1224,7 @@ _start:
     mov rsi, msg        ; address of string to output
     mov rdx, len        ; number of bytes
     syscall             ; invoke operating system to do the write
-mov rax, 60         ; system call for exit
+    mov rax, 60        ; system call for exit
     xor rdi, rdi        ; exit code 0
     syscall             ; invoke operating system to exit
 ```
@@ -1907,7 +1927,7 @@ Factor is a modern, feature-rich concatenative language. It takes the stack-base
 **File**: `src/059_hello_j.ijs`
 
 ```j
-'Hello World'
+echo 'Hello World'
 ```
 
 **Technical Profile**:
@@ -1974,6 +1994,7 @@ APL (A Programming Language) is famous for its unique character set. It treats m
 100 100 moveto
 (Hello World) show
 showpage
+(Hello World\n) print flush
 ```
 
 **Technical Profile**:
@@ -2291,7 +2312,7 @@ KTHXBYE
 - **Developer/Origin**: Adam Lindsay (2007).
 - **Paradigm**: Esoteric, Meme-based.
 - **Typing**: Dynamic.
-- **Runtime/Platform**: Various Interpreters (LCI, PLOL).
+- **Runtime/Platform**: Various Interpreters (e.g., lci).
 
 **The Story & Purpose**:
 LOLCODE is an esoteric programming language inspired by lolspeak, the language of the "lolcat" internet meme. It was created to see if a functional language could be built using only the vocabulary of cat memes. Commands include `HAI` (start), `KTHXBYE` (end), and `VISIBLE` (print).
@@ -2349,32 +2370,34 @@ Rockstar was designed to create programs that look like 80s power ballads. Its p
 
 ```chef
 Hello World Souffle.
+
 Ingredients.
 72 g haricot beans
 101 eggs
 108 g lard
 111 cups oil
 32 zucchinis
-119 ml water
-111 tsp salt
+87 ml water
 114 ml mustard
-108 g cumin
 100 g flour
 33 g sugar
+
 Method.
-Put flour into the mixing bowl.
 Put sugar into the mixing bowl.
-Put cumin into the mixing bowl.
+Put flour into the mixing bowl.
+Put lard into the mixing bowl.
 Put mustard into the mixing bowl.
-Put salt into the mixing bowl.
+Put oil into the mixing bowl.
 Put water into the mixing bowl.
 Put zucchinis into the mixing bowl.
 Put oil into the mixing bowl.
+Put lard into the mixing bowl.
 Put lard into the mixing bowl.
 Put eggs into the mixing bowl.
 Put haricot beans into the mixing bowl.
 Liquefy contents of the mixing bowl.
 Pour contents of the mixing bowl into the baking dish.
+
 Serves 1.
 ```
 
@@ -2404,74 +2427,55 @@ Chef programs are designed to look like cooking recipes. Variables are ingredien
 
 **File**: `src/074_hello_shakespeare.spl`
 
-```text
+```shakespeare
 The Infamous Hello World Program.
+
 Romeo, a young man with a remarkable patience.
 Juliet, a likewise young woman of remarkable grace.
-Ophelia, a remarkable woman much in dispute with Hamlet.
-Hamlet, the flatterer of Andersen Insulting A/S.
-Act I: Hamlet's insults and flattery.
-Scene I: The insulting of Romeo.
-[Enter Hamlet and Romeo]
-Hamlet:
- You lying stupid fatherless smelly coward!
- You are as sweet as the sum of a beautiful rose and a flower!
-[Exit Hamlet]
-[Enter Juliet]
-Romeo:
- Speak your mind. You are as worried as the sum of yourself and the difference between my small smooth hamster and a stone. Speak your mind!
-[Exit Romeo]
-[Enter Ophelia]
+
+Act I: The greeting.
+
+Scene I: Juliet spells it out.
+
+[Enter Romeo and Juliet]
+
 Juliet:
- Speak your mind!
-[Exit Ophelia]
-[Enter Hamlet]
+ You are as lovely as the sum of a happy fair mighty gentle proud good rose and a sweet happy fair pony. Speak your mind!
+
 Juliet:
- Speak your mind! You are as vile as the sum of yourself and a toad! Speak your mind!
-[Exit Hamlet]
-[Enter Romeo]
+ You are as good as the sum of a golden sweet happy fair mighty gentle angel and the sum of a noble golden sweet happy fair hero and the sum of a fine noble plum and a flower. Speak your mind!
+
 Juliet:
- Speak your mind!
-[Exit Romeo]
-[Enter Hamlet]
+ You are as proud as the sum of a warm lovely fine noble golden sweet rose and the sum of a good warm lovely fine noble pony and the sum of a proud good warm angel and a gentle proud hero. Speak your mind!
+
 Juliet:
- Speak your mind!
-[Exit Juliet]
-[Enter Ophelia]
-Hamlet:
- Speak your mind!
-[Exit Ophelia]
-[Enter Juliet]
-Hamlet:
- Speak your mind!
-[Exit Juliet]
-[Enter Ophelia]
-Hamlet:
- Speak your mind!
-[Exit Ophelia]
-[Enter Romeo]
-Hamlet:
- Speak your mind!
-[Exit Romeo]
-[Enter Juliet]
-Hamlet:
- Speak your mind!
-[Exit Juliet]
-[Enter Ophelia]
-Hamlet:
- Speak your mind!
-[Exit Hamlet]
-[Enter Romeo]
-Ophelia:
- Speak your mind!
-[Exit Romeo]
-[Enter Hamlet]
-Ophelia:
- Speak your mind!
-[Exit Ophelia]
-[Enter Romeo]
-Hamlet:
- Speak your mind!
+ You are as noble as the sum of a mighty gentle proud good warm lovely plum and the sum of a fair mighty gentle proud good flower and the sum of a happy fair mighty rose and a sweet happy pony. Speak your mind!
+
+Juliet:
+ You are as sweet as the sum of a golden sweet happy fair mighty gentle angel and the sum of a noble golden sweet happy fair hero and the sum of a fine noble golden plum and the sum of a lovely fine flower and the sum of a warm rose and a pony. Speak your mind!
+
+Juliet:
+ You are as brave as a proud good warm lovely fine angel. Speak your mind!
+
+Juliet:
+ You are as happy as the sum of a gentle proud good warm lovely fine hero and the sum of a mighty gentle proud good plum and the sum of a fair mighty flower and the sum of a happy rose and a pony. Speak your mind!
+
+Juliet:
+ You are as fair as the sum of a golden sweet happy fair mighty gentle angel and the sum of a noble golden sweet happy fair hero and the sum of a fine noble golden plum and the sum of a lovely fine flower and the sum of a warm rose and a pony. Speak your mind!
+
+Juliet:
+ You are as gentle as the sum of a proud good warm lovely fine noble angel and the sum of a gentle proud good warm lovely hero and the sum of a mighty gentle proud good plum and a fair flower. Speak your mind!
+
+Juliet:
+ You are as fine as the sum of a happy fair mighty gentle proud good rose and the sum of a sweet happy fair mighty gentle pony and the sum of a golden sweet happy angel and a noble golden hero. Speak your mind!
+
+Juliet:
+ You are as bold as the sum of a fine noble golden sweet happy fair plum and the sum of a lovely fine noble golden sweet flower and a warm lovely rose. Speak your mind!
+
+Juliet:
+ You are as warm as the sum of a good warm lovely fine noble pony and a angel. Speak your mind!
+
+[Exeunt]
 ```
 
 **Technical Profile**:
@@ -2501,15 +2505,19 @@ The Shakespeare Programming Language (SPL) makes your code look like a Shakespea
 **File**: `src/075_hello_chicken.chicken`
 
 ```text
-chicken
-chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
-chicken chicken
-... (89 lines total)
+chicken chicken chicken ... chicken   (82 chickens: push 72, the code for H)
+chicken chicken chicken chicken chicken chicken chicken chicken chicken   (9: turn it into a character)
+chicken chicken chicken ... chicken   (111 chickens: push 101, the code for e)
+chicken chicken chicken chicken chicken chicken chicken chicken chicken   (9: turn it into a character)
+chicken chicken   (2: join the two on top of the stack)
+... (35 lines and 1,335 chickens in total)
 ```
+
+**Note**: The listing is abbreviated and annotated; the real file contains nothing but the word `chicken`. The number of chickens on a line is the instruction, and 10 or more pushes that number minus 10.
 
 **Technical Profile**:
 
-- **Developer/Origin**: Torbjörn Söderstedt (2002).
+- **Developer/Origin**: Torbjörn Söderstedt.
 - **Paradigm**: Esoteric, Minimalist.
 - **Typing**: None.
 - **Runtime/Platform**: Chicken Interpreter.
@@ -2533,12 +2541,7 @@ Chicken is a language where the only valid keyword is the word "chicken." The nu
 
 **File**: `src/076_hello_whitespace.ws`
 
-```text
-      	           	 L
-	 L           	 	         	 L
-	 L           	 	     	 	   L
-... (14 lines total)
-```
+**Note**: The source consists entirely of spaces, tabs and newlines, so there is nothing visible to show. Each character is pushed onto the stack as a binary number and printed.
 
 **Technical Profile**:
 
@@ -2598,13 +2601,13 @@ Befunge is a unique two-dimensional language. The instruction pointer moves acro
 
 ### 78. Piet
 
-**File**: `src/078_hello_piet.piet`
+**File**: `src/078_hello_piet.png`
 
-**Note**: A Piet program is an image, so there is no code listing. The `.piet` file is an empty placeholder; the actual program is `src/078_hello.piet_piet.png`.
+**Note**: A Piet program is an image, so there is no code listing. The image is a single 1098-pixel-wide row of colour blocks: each block's size is a character code, which is pushed and then printed.
 
 **Technical Profile**:
 
-- **Developer/Origin**: David Morgan-Mar (2001).
+- **Developer/Origin**: David Morgan-Mar (early 2000s).
 - **Paradigm**: Esoteric, Graphical.
 - **Typing**: Color-based.
 - **Runtime/Platform**: Piet Interpreter (reads PNG/GIF files).
@@ -2629,19 +2632,33 @@ Named after the abstract artist Piet Mondrian, Piet code consists of bitmaps tha
 **File**: `src/079_hello_omgrofl.omgrofl`
 
 ```omgrofl
-loool
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-wtf
-pwned
-lmao
-... (108 lines total)
+lol iz 72
+rofl lol
+lol iz 101
+rofl lol
+lol iz 108
+rofl lol
+lol iz 108
+rofl lol
+lol iz 111
+rofl lol
+lol iz 32
+rofl lol
+lol iz 87
+rofl lol
+lol iz 111
+rofl lol
+lol iz 114
+rofl lol
+lol iz 108
+rofl lol
+lol iz 100
+rofl lol
+lol iz 33
+rofl lol
+lol iz 10
+rofl lol
+stfu
 ```
 
 **Technical Profile**:
@@ -2652,7 +2669,7 @@ lmao
 - **Runtime/Platform**: Omgrofl Interpreter.
 
 **The Story & Purpose**:
-Omgrofl (Oh My God, ROFL) is a language based on 2000s "Internet Slang." Variables must be named after L33t terms (like `n00b` or `pwned`), and the control flow uses phrases like `w00t` and `stfu`. It captures the "gamer" culture of the early web.
+Omgrofl (Oh My God, ROFL) is a language based on 2000s "Internet Slang." Variables must be variations of "lol" (like `lol`, `lool`, or `loool`), and commands are slang terms such as `lmao` (increment), `roflmao` (decrement), `w00t` (comment), and `stfu` (exit). It captures the "gamer" culture of the early web.
 
 **Key Use Cases**:
 
@@ -2673,6 +2690,8 @@ Omgrofl (Oh My God, ROFL) is a language based on 2000s "Internet Slang." Variabl
 say "Hello World"!
 America is great.
 ```
+
+**Note**: The output is `hello world`, because TrumpScript converts everything to lower case.
 
 **Technical Profile**:
 
@@ -2706,6 +2725,8 @@ Created during the 2016 election, TrumpScript is a satirical language based on D
 Hodor! Hodor. Hodor! Hodor! Hodor. Hodor! Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor. Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor! Hodor! Hodor! Hodor! Hodor! Hodor. Hodor! Hodor. Hodor! Hodor. Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor. Hodor. Hodor! Hodor. Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor!
 ```
 
+**Note**: There are several unrelated Hodor languages. This file is a placeholder that spells "Hello World" in binary (`Hodor.` = 1, `Hodor!` = 0); it is not a program for any of them.
+
 **Technical Profile**:
 
 - **Developer/Origin**: Various (inspired by Game of Thrones).
@@ -2733,27 +2754,25 @@ Hodor is a language inspired by the character Hodor from _Game of Thrones_. Simi
 **File**: `src/082_hello_ook.ook`
 
 ```text
-Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook! Ook! Ook? Ook! Ook? Ook.
-Ook! Ook. Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook?
-Ook! Ook! Ook? Ook! Ook? Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook! Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook! Ook. Ook. Ook? Ook. Ook? Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook.
-Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook! Ook! Ook? Ook! Ook? Ook. Ook! Ook.
-Ook. Ook? Ook. Ook? Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook.
 Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
-Ook. Ook? Ook! Ook! Ook? Ook! Ook? Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!
-Ook! Ook! Ook! Ook! Ook! Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!
-Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook. Ook? Ook. Ook? Ook. Ook. Ook! Ook.
+Ook! Ook? Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook. Ook?
+Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook? Ook. Ook. Ook? Ook. Ook? Ook. Ook? Ook. Ook? Ook.
+Ook! Ook! Ook? Ook! Ook. Ook? Ook. Ook. Ook. Ook? Ook. Ook. Ook. Ook? Ook! Ook!
+Ook. Ook? Ook. Ook? Ook. Ook. Ook! Ook? Ook? Ook. Ook? Ook! Ook? Ook. Ook! Ook!
+Ook? Ook! Ook. Ook? Ook. Ook? Ook! Ook. Ook. Ook? Ook! Ook! Ook! Ook! Ook! Ook!
+Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook! Ook. Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook. Ook? Ook. Ook?
+Ook! Ook. Ook? Ook. Ook! Ook! Ook! Ook. Ook? Ook. Ook! Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook! Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!
+Ook! Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!
+Ook! Ook! Ook! Ook. Ook. Ook? Ook. Ook? Ook. Ook. Ook! Ook. Ook. Ook? Ook. Ook.
+Ook. Ook. Ook! Ook.
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: David Morgan-Mar (2002).
+- **Developer/Origin**: David Morgan-Mar (early 2000s).
 - **Paradigm**: Esoteric, Minimalist.
 - **Typing**: None.
 - **Runtime/Platform**: Ook! Interpreter (equivalent to Brainfuck).
@@ -2781,18 +2800,18 @@ Ook! is a joke language designed for orangutans. It is a one-to-one mapping of B
 PLEASE DO ,1 <- #13
 DO ,1 SUB #1 <- #238
 DO ,1 SUB #2 <- #108
-PLEASE DO ,1 SUB #3 <- #112
-DO ,1 SUB #4 <- #0
+DO ,1 SUB #3 <- #112
+PLEASE DO ,1 SUB #4 <- #0
 DO ,1 SUB #5 <- #64
-PLEASE DO ,1 SUB #6 <- #194
-DO ,1 SUB #7 <- #48
-DO ,1 SUB #8 <- #26
-DO ,1 SUB #9 <- #150
-DO ,1 SUB #10 <- #140
-DO ,1 SUB #11 <- #162
-DO ,1 SUB #12 <- #14
-DO ,1 SUB #13 <- #140
-PLEASE READ OUT ,1
+DO ,1 SUB #6 <- #242
+DO ,1 SUB #7 <- #26
+PLEASE DO ,1 SUB #8 <- #244
+DO ,1 SUB #9 <- #168
+DO ,1 SUB #10 <- #24
+DO ,1 SUB #11 <- #16
+PLEASE DO ,1 SUB #12 <- #162
+DO ,1 SUB #13 <- #52
+DO READ OUT ,1
 PLEASE GIVE UP
 ```
 
@@ -2899,7 +2918,7 @@ animate
 - **Runtime/Platform**: Zombie Interpreter.
 
 **The Story & Purpose**:
-In Zombie, your variables are "shamblers" or "ghosts" that you must "summon" and "animate." The language is designed to handle "undead" entities. If you don't manage your zombies correctly, they can "eat" your data or "haunt" your loops.
+ZOMBIE (Zombie-Oriented Machine-Being Interface Engine) is a language designed for necromancers. Programs declare undead entities—zombies, ghosts, vampires, demons, and djinn—give them tasks inside a `summon` block, and then `animate` (or `disturb`) them. Zombies obey immediately and in order, while the other entities are progressively less reliable about when, or whether, they do what is asked.
 
 **Key Use Cases**:
 
@@ -2918,9 +2937,12 @@ In Zombie, your variables are "shamblers" or "ghosts" that you must "summon" and
 **File**: `src/087_hello_cow.cow`
 
 ```text
-MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO
-MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO
-... (105 lines total)
+MoO MoO MoO MoO MoO MoO MoO MoO MOO moO MoO MoO MoO MoO MOO moO MoO MoO moO MoO
+MoO MoO moO MoO MoO MoO moO MoO mOo mOo mOo mOo MOo moo moO MoO moO MoO moO MOo
+moO moO MoO MOO mOo moo mOo MOo moo moO moO Moo moO MOo MOo MOo Moo MoO MoO MoO
+MoO MoO MoO MoO Moo Moo MoO MoO MoO Moo moO moO Moo mOo MOo Moo mOo Moo MoO MoO
+MoO Moo MOo MOo MOo MOo MOo MOo Moo MOo MOo MOo MOo MOo MOo MOo MOo Moo moO moO
+MoO Moo moO MoO MoO Moo
 ```
 
 **Technical Profile**:
@@ -2951,7 +2973,7 @@ Cow is a language where every command is a variation of the word "moo" (e.g., `m
 
 ```emojicode
 🏁 🍇
-  😀 🔤Hello World🔤
+  😀 🔤Hello World🔤❗️
 🍉
 ```
 
@@ -2960,7 +2982,7 @@ Cow is a language where every command is a variation of the word "moo" (e.g., `m
 - **Developer/Origin**: Theo Weidmann (2016).
 - **Paradigm**: Object-oriented, Esoteric.
 - **Typing**: Static, Strong.
-- **Runtime/Platform**: Emojicode Real-Time Engine (ERT).
+- **Runtime/Platform**: Native (LLVM-based compiler; early versions ran on the Emojicode Real-Time Engine).
 
 **The Story & Purpose**:
 Emojicode is a high-level language where all keywords are emojis. Unlike most esoteric languages, it is actually quite powerful, featuring a full object-oriented system, optionals, and generics. It was designed to bring the expressiveness of emojis to the rigid world of programming.
@@ -2982,7 +3004,7 @@ Emojicode is a high-level language where all keywords are emojis. Unlike most es
 **File**: `src/089_hello_unlambda.unl`
 
 ~~~unlambda
-`r```````````.H.e.l.l.o. .W.o.r.l.d
+`r```````````.H.e.l.l.o. .W.o.r.l.di
 ~~~
 
 **Technical Profile**:
@@ -3047,6 +3069,8 @@ Hello World is what we say
 Beauty in the code
 ```
 
+**Note**: This is an ordinary haiku used as a placeholder. Haifu has no complete implementation, so it is not a working program.
+
 **Technical Profile**:
 
 - **Developer/Origin**: David Morgan-Mar.
@@ -3074,7 +3098,7 @@ Haifu is an esoteric language where the source code must be a valid Haiku (5-7-5
 **File**: `src/092_hello_glass.glass`
 
 ```glass
-{M[m(_o)O!(_n)O!(_o)O!(_l)O!(_l)O!(_e)O!(_H)O!]?}
+{M[m(_o)O!"Hello World!"(_o)o.?]}
 ```
 
 **Technical Profile**:
@@ -3103,11 +3127,13 @@ Glass is an esoteric language that combines object-oriented principles with a st
 **File**: `src/093_hello_hexagony.hex`
 
 ```hexagony
-  H ; e ;
- l ; d ;
-* ; r ; o
- ; W ; l
-  ; o ;
+   H ; e ;
+  l ; d ; *
+ ; r ; o ; W
+l ; ; o ; * 4
+ 3 3 ; @ . >
+  ; 2 3 < \
+   4 ; * /
 ```
 
 **Technical Profile**:
@@ -3137,7 +3163,7 @@ Hexagony is a two-dimensional language where the code is laid out in a hexagonal
 
 ```dogescript
 shh this is a comment
-plz console.log with "Hello World"
+plz console.log with 'Hello World'
 ```
 
 **Technical Profile**:
@@ -3227,8 +3253,8 @@ ABC was designed to be a replacement for BASIC—easy for non-programmers to use
 **File**: `src/097_hello_vigil.vig`
 
 ```vigil
-# (Vigil is Python-based but with consequences)
-print("Hello World")
+def main():
+    print('Hello World')
 ```
 
 **Technical Profile**:
@@ -3324,7 +3350,13 @@ Algol 68 was designed to be a rigorous, mathematically sound successor to Algol 
 **File**: `src/100_hello_i_use_arch_btw.arch`
 
 ```text
-i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw ... (4230 words total)
+arch arch arch arch arch arch arch arch the i arch arch arch arch the i arch
+arch i arch arch arch i arch arch arch i arch use use use use linux way i arch
+i arch i linux i i arch the use way use linux way i i btw i linux linux linux
+btw arch arch arch arch arch arch arch btw btw arch arch arch btw i i btw use
+linux btw use btw arch arch arch btw linux linux linux linux linux linux btw
+linux linux linux linux linux linux linux linux btw i i arch btw i arch arch
+btw
 ```
 
 **Technical Profile**:

@@ -1,108 +1,27 @@
-loool
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-wtf
-pwned
-lmao
-lmao
-lmao
-lmao
-wtf
-pwned
-lmao
-lmao
-pwned
-lmao
-lmao
-lmao
-pwned
-lmao
-lmao
-lmao
-pwned
-lmao
-pwnd
-pwnd
-pwnd
-pwnd
-lmfao
-rtfm
-pwned
-lmao
-pwned
-lmao
-pwned
-lmfao
-pwned
-pwned
-lmao
-wtf
-pwnd
-rtfm
-pwnd
-lmfao
-rtfm
-pwned
-pwned
-rofl
-pwned
-lmfao
-lmfao
-lmfao
-rofl
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-lmao
-rofl
-rofl
-lmao
-lmao
-lmao
-rofl
-pwned
-pwned
-rofl
-pwnd
-lmfao
-rofl
-pwnd
-rofl
-lmao
-lmao
-lmao
-rofl
-lmfao
-lmfao
-lmfao
-lmfao
-lmfao
-lmfao
-rofl
-lmfao
-lmfao
-lmfao
-lmfao
-lmfao
-lmfao
-lmfao
-lmfao
-rofl
-pwned
-pwned
-lmao
-rofl
-pwned
-lmao
-lmao
-rofl
+lol iz 72
+rofl lol
+lol iz 101
+rofl lol
+lol iz 108
+rofl lol
+lol iz 108
+rofl lol
+lol iz 111
+rofl lol
+lol iz 32
+rofl lol
+lol iz 87
+rofl lol
+lol iz 111
+rofl lol
+lol iz 114
+rofl lol
+lol iz 108
+rofl lol
+lol iz 100
+rofl lol
+lol iz 33
+rofl lol
+lol iz 10
+rofl lol
 stfu
