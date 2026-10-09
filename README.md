@@ -265,7 +265,7 @@ func main() {
 - **Runtime/Platform**: Compiled, natively executable with a small runtime.
 
 **The Story & Purpose**:
-Google engineers who were frustrated with C++’s complexity and slow build times. It was designed to maintain the performance of C and C++ while being much simpler and safer.
+Go was created by Google engineers who were frustrated with C++’s complexity and slow build times. It was designed to maintain the performance of C and C++ while being much simpler and safer.
 
 **Key Use Cases**:
 
@@ -682,7 +682,7 @@ IO.puts "Hello World"
 
 **Technical Profile**:
 
-- **Developer/Origin**: José Valim (2011), Plataformatec.
+- **Developer/Origin**: José Valim (2012), Plataformatec.
 - **Paradigm**: Functional, Concurrent, Distributed.
 - **Typing**: Dynamic, Strong.
 - **Runtime/Platform**: BEAM (Erlang Virtual Machine).
@@ -834,10 +834,9 @@ OCaml (Objective Caml) is the main implementation of the Caml programming langua
 **File**: `src/026_hello_erlang.erl`
 
 ```erlang
--module(hello).
--export([start/0]).
-start() ->
-    io:fwrite("Hello World~n").
+#!/usr/bin/env escript
+main(_) ->
+    io:format("Hello World~n").
 ```
 
 **Technical Profile**:
@@ -853,7 +852,7 @@ Erlang was built to solve a specific problem in telephony—how to handle millio
 **Key Use Cases**:
 
 - **Telephony**: Powering massive switches and routers.
-- **Messaging**: WhatsApp and WeChat core infrastructures.
+- **Messaging**: WhatsApp's core infrastructure.
 - **High-Availability Services**: Online gaming backends and banking.
 
 **Pros & Cons**:
@@ -873,7 +872,7 @@ Erlang was built to solve a specific problem in telephony—how to handle millio
 
 **Technical Profile**:
 
-- **Developer/Origin**: ANSI Committee (1984).
+- **Developer/Origin**: Guy L. Steele et al. (1984); ANSI standard (1994).
 - **Paradigm**: Multi-paradigm (Procedural, Object-oriented, Functional).
 - **Typing**: Dynamic, Strong/Weak.
 - **Runtime/Platform**: SBCL, CCL, ECL, and others.
@@ -939,7 +938,7 @@ Scheme was designed to be a minimalist dialect of Lisp. It focuses on simplicity
 - **Developer/Origin**: PLT Inc. (1995).
 - **Paradigm**: Multi-paradigm (Functional, Imperative).
 - **Typing**: Dynamic (Typed Racket available).
-- **Runtime/Platform**: Racket VM (formerly Racket on Chez).
+- **Runtime/Platform**: Racket CS (built on Chez Scheme; formerly the Racket BC VM).
 
 **The Story & Purpose**:
 Racket started as a version of Scheme (DrScheme) but evolved into a general-purpose language and a "meta-programming" platform. Its slogan is "The language-oriented programming language." It allows developers to create entirely new languages using its macro and module systems.
@@ -993,7 +992,7 @@ Groovy was designed to be a dynamic, concise alternative to Java for the JVM. It
 **File**: `src/031_hello_elm.elm`
 
 ```elm
-module Hello exposing (..)
+module Main exposing (..)
 import Html exposing (text)
 main = text "Hello World"
 ```
@@ -1205,7 +1204,7 @@ _start:
     mov rsi, msg        ; address of string to output
     mov rdx, len        ; number of bytes
     syscall             ; invoke operating system to do the write
-    mov rax, 60         ; system call for exit
+mov rax, 60         ; system call for exit
     xor rdi, rdi        ; exit code 0
     syscall             ; invoke operating system to exit
 ```
@@ -1273,10 +1272,11 @@ VB.NET was created as the successor to Visual Basic 6.0, transitioning it to the
 
 ```objectivec
 #import <Foundation/Foundation.h>
+#include <stdio.h>
 int main() {
-    @autoreleasepool {
-        NSLog(@"Hello World");
-    }
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    printf("Hello World\n");
+    [pool drain];
     return 0;
 }
 ```
@@ -1293,7 +1293,7 @@ Objective-C added Smalltalk-style messaging to the C language. It was chosen by 
 
 **Key Use Cases**:
 
-- **Legacy iOS/macOS Development**: Mantaining older apps built before 2014.
+- **Legacy iOS/macOS Development**: Maintaining older apps built before 2014.
 - **Systems Integration**: Bridging C code with higher-level Apple APIs.
 
 **Pros & Cons**:
@@ -1330,9 +1330,11 @@ Smalltalk is the language that defined modern Object-Oriented Programming. It in
 **Pros & Cons**:
 
 - **Pros**: Purest implementation of OOP; allows for "live" modifications without restarting; highly influential on almost all modern languages.
-- **Cons**: Requires a proprietary VM environment; unconventional syntax; very small commercial ecosystem today.
+- **Cons**: Requires its own image-based VM environment; unconventional syntax; very small commercial ecosystem today.
 
 ---
+
+## Part 3: The Niche & Specialized (41–60)
 
 ### 41. Tcl
 
@@ -1370,6 +1372,7 @@ Tcl (Tool Command Language) was designed to be an easily embeddable command lang
 **File**: `src/042_hello_dlang.d`
 
 ```d
+module hello;
 import std.stdio;
 void main() {
     writeln("Hello World");
@@ -1507,7 +1510,7 @@ Unlike Bash, which pipes text, PowerShell pipes _objects_. Developed specificall
 - **Runtime/Platform**: Various Interpreters/Compilers.
 
 **The Story & Purpose**:
-BASIC (Beginner's All-purpose Symbolic Instruction Code) was the entry point for the personal computer revolution. It was designed to be easy for non-science students to use. In the 70s and 80s, almost every home computer shipped with a version of BASIC (like GW-BASIC or Commodore BASIC) in ROM.
+BASIC (Beginner's All-purpose Symbolic Instruction Code) was the entry point for the personal computer revolution. It was designed to be easy for non-science students to use. In the 70s and 80s, almost every home computer shipped with a version of BASIC, either in ROM (like Commodore BASIC) or on disk (like GW-BASIC).
 
 **Key Use Cases**:
 
@@ -1618,7 +1621,8 @@ AWK is a domain-specific language designed for text processing and data extracti
 **File**: `src/050_hello_sed.sed`
 
 ```sed
-s/.*/Hello World/p
+1c Hello World
+q
 ```
 
 **Technical Profile**:
@@ -1649,8 +1653,9 @@ Sed (Stream Editor) is a non-interactive text editor. It takes a stream of text,
 
 ```zig
 const std = @import("std");
-pub fn main() void {
-    std.debug.print("Hello World\n", .{});
+pub fn main() !void {
+    const stdout = std.io.getStdOut().writer();
+    try stdout.print("Hello World\n", .{});
 }
 ```
 
@@ -1704,7 +1709,7 @@ V is a simple language inspired by Go, but with the aim of being even faster and
 
 **Pros & Cons**:
 
-- **Pros**: Lightning-fast compilation; very simple, readable syntax; no garbage collector (uses Autofree).
+- **Pros**: Lightning-fast compilation; very simple, readable syntax; flexible memory management (optional GC, experimental Autofree).
 - **Cons**: Controversial history regarding fulfilled promises; lacks the maturity of Go or Rust; relatively small community.
 
 ---
@@ -1715,7 +1720,7 @@ V is a simple language inspired by Go, but with the aim of being even faster and
 
 ```haxe
 class Main {
-    static public function main() {
+    static function main() {
         trace("Hello World");
     }
 }
@@ -1778,8 +1783,7 @@ CoffeeScript was designed to make JavaScript more readable by introducing Python
 **File**: `src/055_hello_rexx.rexx`
 
 ```rexx
-/* Hello World in REXX */
-say "Hello World"
+SAY "Hello World"
 ```
 
 **Technical Profile**:
@@ -1841,8 +1845,7 @@ Icon is a high-level language focused on string manipulation and complex data st
 **File**: `src/057_hello_forth.fth`
 
 ```forth
-: HELLO ( -- )  ." Hello World" CR ;
-HELLO
+." Hello World" CR
 ```
 
 **Technical Profile**:
@@ -1857,7 +1860,7 @@ Forth is built around a data stack and RPN (Reverse Polish Notation). You define
 
 **Key Use Cases**:
 
-- **Embedded Systems**: Space probes (Voyager, Galileo) and hardware testing.
+- **Embedded Systems**: Spacecraft instruments (Rosetta, Philae) and hardware testing.
 - **Bootloaders**: Minimal environments where every byte counts.
 - **Industrial Control**: Real-time robotics.
 
@@ -1873,6 +1876,7 @@ Forth is built around a data stack and RPN (Reverse Polish Notation). You define
 **File**: `src/058_hello_factor.factor`
 
 ```factor
+USE: io
 "Hello World" print
 ```
 
@@ -1903,7 +1907,7 @@ Factor is a modern, feature-rich concatenative language. It takes the stack-base
 **File**: `src/059_hello_j.ijs`
 
 ```j
-echo 'Hello World'
+'Hello World'
 ```
 
 **Technical Profile**:
@@ -1924,7 +1928,7 @@ J is a successor to APL. It maintains APL's incredible power for mathematical an
 **Pros & Cons**:
 
 - **Pros**: Unmatched density and power for array operations; mathematically elegant.
-- **Cons**: Extremely cryptic syntax ("Tacoless" programming); steep learning curve.
+- **Cons**: Extremely cryptic syntax ("tacit" programming); steep learning curve.
 
 ---
 
@@ -1965,7 +1969,8 @@ APL (A Programming Language) is famous for its unique character set. It treats m
 **File**: `src/061_hello_postscript.ps`
 
 ```postscript
-/Helvetica findfont 72 scalefont setfont
+/Helvetica findfont
+24 scalefont setfont
 100 100 moveto
 (Hello World) show
 showpage
@@ -2054,13 +2059,13 @@ Gnuplot is a portable command-line driven graphing utility. It was created to he
 
 ---
 
-### 4. Make
+### 64. Make
 
 **File**: `src/064_hello_make.mk`
 
 ```make
-hello:
-@echo "Hello World"
+all:
+	@echo Hello World
 ```
 
 **Technical Profile**:
@@ -2178,7 +2183,7 @@ m4 is a general-purpose macro processor. It was designed to provide a better way
 
 ### 68. PureScript
 
-**File**: `src/068_hello_purs.purs`
+**File**: `src/068_hello_purescript.purs`
 
 ```purescript
 module Main where
@@ -2212,8 +2217,8 @@ PureScript brings the power and safety of Haskell to the web browser. It is a st
 
 **File**: `src/069_hello_brainfuck.bf`
 
-```python
-# python3 -c 'print("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")'
+```brainfuck
+++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
 ```
 
 **Technical Profile**:
@@ -2250,7 +2255,7 @@ YOU HAVE BEEN TERMINATED
 
 **Technical Profile**:
 
-- **Developer/Origin**: Lauri Hartikka (2014).
+- **Developer/Origin**: Lauri Hartikka (2013).
 - **Paradigm**: Imperative, Joke-based.
 - **Typing**: Dynamic.
 - **Runtime/Platform**: JVM.
@@ -2268,13 +2273,16 @@ ArnoldC is an esoteric language where the commands are replaced by famous quotes
 - **Pros**: Hilarious; strangely readable for fans of Arnold's movies.
 - **Cons**: Extremely verbose; limited functionality; not suitable for professional work.
 
+---
+
 ### 71. LOLCODE
 
 **File**: `src/071_hello_lolcode.lol`
 
 ```lolcode
 HAI 1.2
-    VISIBLE "Hello World"
+  CAN HAS STDIO?
+  VISIBLE "Hello World"
 KTHXBYE
 ```
 
@@ -2306,6 +2314,11 @@ LOLCODE is an esoteric programming language inspired by lolspeak, the language o
 
 ```rockstar
 Say "Hello World"
+
+Midnight takes your heart and your soul
+While your heart is as high as your soul
+Put your heart without your soul into your heart
+Give back your heart
 ```
 
 **Technical Profile**:
@@ -2335,41 +2348,34 @@ Rockstar was designed to create programs that look like 80s power ballads. Its p
 **File**: `src/073_hello_chef.chef`
 
 ```chef
-cat << 'EOF'
 Hello World Souffle.
-
 Ingredients.
-72 g H
-101 g e
-108 g l
-108 g l
-111 g o
-32 g space
-87 g W
-111 g o
-114 g r
-108 g l
-100 g d
-33 g !
-
+72 g haricot beans
+101 eggs
+108 g lard
+111 cups oil
+32 zucchinis
+119 ml water
+111 tsp salt
+114 ml mustard
+108 g cumin
+100 g flour
+33 g sugar
 Method.
-Put H into mixing bowl.
-Put e into mixing bowl.
-Put l into mixing bowl.
-Put l into mixing bowl.
-Put o into mixing bowl.
-Put space into mixing bowl.
-Put W into mixing bowl.
-Put o into mixing bowl.
-Put r into mixing bowl.
-Put l into mixing bowl.
-Put d into mixing bowl.
-Put ! into mixing bowl.
+Put flour into the mixing bowl.
+Put sugar into the mixing bowl.
+Put cumin into the mixing bowl.
+Put mustard into the mixing bowl.
+Put salt into the mixing bowl.
+Put water into the mixing bowl.
+Put zucchinis into the mixing bowl.
+Put oil into the mixing bowl.
+Put lard into the mixing bowl.
+Put eggs into the mixing bowl.
+Put haricot beans into the mixing bowl.
 Liquefy contents of the mixing bowl.
 Pour contents of the mixing bowl into the baking dish.
-
 Serves 1.
-EOF
 ```
 
 **Technical Profile**:
@@ -2398,26 +2404,79 @@ Chef programs are designed to look like cooking recipes. Variables are ingredien
 
 **File**: `src/074_hello_shakespeare.spl`
 
-```bash
-cat << 'EOF'
+```text
 The Infamous Hello World Program.
-
 Romeo, a young man with a remarkable patience.
 Juliet, a likewise young woman of remarkable grace.
-
-                    Act I: Hamlet's Speeches.
-                    Scene I: The Setup.
-[Enter Romeo and Juliet]
-Romeo: You are as beautiful as the sun! (sets Juliet to 72)
-Juliet: Speak your mind. (prints out the character in Juliet)
-...
+Ophelia, a remarkable woman much in dispute with Hamlet.
+Hamlet, the flatterer of Andersen Insulting A/S.
+Act I: Hamlet's insults and flattery.
+Scene I: The insulting of Romeo.
+[Enter Hamlet and Romeo]
+Hamlet:
+ You lying stupid fatherless smelly coward!
+ You are as sweet as the sum of a beautiful rose and a flower!
+[Exit Hamlet]
+[Enter Juliet]
+Romeo:
+ Speak your mind. You are as worried as the sum of yourself and the difference between my small smooth hamster and a stone. Speak your mind!
 [Exit Romeo]
-EOF
+[Enter Ophelia]
+Juliet:
+ Speak your mind!
+[Exit Ophelia]
+[Enter Hamlet]
+Juliet:
+ Speak your mind! You are as vile as the sum of yourself and a toad! Speak your mind!
+[Exit Hamlet]
+[Enter Romeo]
+Juliet:
+ Speak your mind!
+[Exit Romeo]
+[Enter Hamlet]
+Juliet:
+ Speak your mind!
+[Exit Juliet]
+[Enter Ophelia]
+Hamlet:
+ Speak your mind!
+[Exit Ophelia]
+[Enter Juliet]
+Hamlet:
+ Speak your mind!
+[Exit Juliet]
+[Enter Ophelia]
+Hamlet:
+ Speak your mind!
+[Exit Ophelia]
+[Enter Romeo]
+Hamlet:
+ Speak your mind!
+[Exit Romeo]
+[Enter Juliet]
+Hamlet:
+ Speak your mind!
+[Exit Juliet]
+[Enter Ophelia]
+Hamlet:
+ Speak your mind!
+[Exit Hamlet]
+[Enter Romeo]
+Ophelia:
+ Speak your mind!
+[Exit Romeo]
+[Enter Hamlet]
+Ophelia:
+ Speak your mind!
+[Exit Ophelia]
+[Enter Romeo]
+Hamlet:
+ Speak your mind!
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: Adam Lindsay (2007).
+- **Developer/Origin**: Karl Wiberg and Jon Åslund (2001).
 - **Paradigm**: Esoteric, Play-based.
 - **Typing**: Variable-based (Characters represent values).
 - **Runtime/Platform**: SPL to C Transpiler.
@@ -2441,13 +2500,16 @@ The Shakespeare Programming Language (SPL) makes your code look like a Shakespea
 
 **File**: `src/075_hello_chicken.chicken`
 
-```python
-# python3 -c 'print("chicken " * 500)'
+```text
+chicken
+chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken
+chicken chicken
+... (89 lines total)
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: Dylan Beattie (2018).
+- **Developer/Origin**: Torbjörn Söderstedt (2002).
 - **Paradigm**: Esoteric, Minimalist.
 - **Typing**: None.
 - **Runtime/Platform**: Chicken Interpreter.
@@ -2471,8 +2533,11 @@ Chicken is a language where the only valid keyword is the word "chicken." The nu
 
 **File**: `src/076_hello_whitespace.ws`
 
-```python
-# python3 -c 'print("\t\n\t\n \t\t  \t \n\t\n \t\t\t\t  \n\t\n \t\t\t\t\t  \n\t\n \t\t\t\t\t  \n\t\n \t\t\t\t\t\t\t\n\t\n \t \t \n\t\n \t\t \t\t\t \n\t\n \t\t\t\t\t\t\t\n\t\n \t\t\t\t\t\t\n\t\n \t\t\t\t\t  \n\t\n \t\t\t\t  \n\t\n \t \t! \n\t\n\n\n")'
+```text
+      	           	 L
+	 L           	 	         	 L
+	 L           	 	     	 	   L
+... (14 lines total)
 ```
 
 **Technical Profile**:
@@ -2502,8 +2567,11 @@ Whitespace is a language that ignores all non-whitespace characters. Space, Tab,
 **File**: `src/077_hello_befunge.befunge`
 
 ```befunge
- >              v
-@,,,,,,,,,,,,"Hello World" <
+>              v
+v  ,,,,,"Hello"<
+>48*,          v
+v,,,,,,"World!"<
+>25*,@
 ```
 
 **Technical Profile**:
@@ -2532,7 +2600,7 @@ Befunge is a unique two-dimensional language. The instruction pointer moves acro
 
 **File**: `src/078_hello_piet.piet`
 
-**Note**: This is an image file.
+**Note**: A Piet program is an image, so there is no code listing. The `.piet` file is an empty placeholder; the actual program is `src/078_hello.piet_piet.png`.
 
 **Technical Profile**:
 
@@ -2556,15 +2624,24 @@ Named after the abstract artist Piet Mondrian, Piet code consists of bitmaps tha
 
 ---
 
-### 79. Omcrofl
+### 79. Omgrofl
 
 **File**: `src/079_hello_omgrofl.omgrofl`
 
 ```omgrofl
-lol n00b iiz 72
-rofl n00b
-...
-stfu
+loool
+lmao
+lmao
+lmao
+lmao
+lmao
+lmao
+lmao
+lmao
+wtf
+pwned
+lmao
+... (108 lines total)
 ```
 
 **Technical Profile**:
@@ -2575,7 +2652,7 @@ stfu
 - **Runtime/Platform**: Omgrofl Interpreter.
 
 **The Story & Purpose**:
-Omcrofl (Oh My God, ROFL) is a language based on 2000s "Internet Slang." Variables must be named after L33t terms (like `n00b` or `pwned`), and the control flow uses phrases like `w00t` and `stfu`. It captures the "gamer" culture of the early web.
+Omgrofl (Oh My God, ROFL) is a language based on 2000s "Internet Slang." Variables must be named after L33t terms (like `n00b` or `pwned`), and the control flow uses phrases like `w00t` and `stfu`. It captures the "gamer" culture of the early web.
 
 **Key Use Cases**:
 
@@ -2593,7 +2670,7 @@ Omcrofl (Oh My God, ROFL) is a language based on 2000s "Internet Slang." Variabl
 **File**: `src/080_hello_trumpscript.tr`
 
 ```trumpscript
-say "Hello World"
+say "Hello World"!
 America is great.
 ```
 
@@ -2625,8 +2702,8 @@ Created during the 2016 election, TrumpScript is a satirical language based on D
 
 **File**: `src/081_hello_hodor.hodor`
 
-```python
-# python3 -c 'print("Hodor! " * 20)'
+```text
+Hodor! Hodor. Hodor! Hodor! Hodor. Hodor! Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor. Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor! Hodor! Hodor! Hodor! Hodor! Hodor. Hodor! Hodor. Hodor! Hodor. Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor. Hodor. Hodor! Hodor. Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor! Hodor. Hodor. Hodor! Hodor. Hodor. Hodor! Hodor! Hodor! Hodor. Hodor. Hodor! Hodor! Hodor. Hodor! Hodor!
 ```
 
 **Technical Profile**:
@@ -2655,8 +2732,23 @@ Hodor is a language inspired by the character Hodor from _Game of Thrones_. Simi
 
 **File**: `src/082_hello_ook.ook`
 
-```python
-# python3 -c 'print("Ook. Ook? " * 50)'
+```text
+Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook! Ook! Ook? Ook! Ook? Ook.
+Ook! Ook. Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook?
+Ook! Ook! Ook? Ook! Ook? Ook. Ook. Ook. Ook! Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook. Ook! Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook! Ook. Ook. Ook? Ook. Ook? Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook? Ook! Ook! Ook? Ook! Ook? Ook. Ook! Ook.
+Ook. Ook? Ook. Ook? Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook.
+Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
+Ook. Ook? Ook! Ook! Ook? Ook! Ook? Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!
+Ook! Ook! Ook! Ook! Ook! Ook. Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook!
+Ook! Ook! Ook! Ook! Ook! Ook! Ook! Ook. Ook. Ook? Ook. Ook? Ook. Ook. Ook! Ook.
 ```
 
 **Technical Profile**:
@@ -2686,10 +2778,21 @@ Ook! is a joke language designed for orangutans. It is a one-to-one mapping of B
 **File**: `src/083_hello_intercal.i`
 
 ```intercal
-DO ,1 <- #13
-PLEASE DO ,1 SUB #1 <- #238
-PLEASE DO ,1 SUB #2 <- #108
-...
+PLEASE DO ,1 <- #13
+DO ,1 SUB #1 <- #238
+DO ,1 SUB #2 <- #108
+PLEASE DO ,1 SUB #3 <- #112
+DO ,1 SUB #4 <- #0
+DO ,1 SUB #5 <- #64
+PLEASE DO ,1 SUB #6 <- #194
+DO ,1 SUB #7 <- #48
+DO ,1 SUB #8 <- #26
+DO ,1 SUB #9 <- #150
+DO ,1 SUB #10 <- #140
+DO ,1 SUB #11 <- #162
+DO ,1 SUB #12 <- #14
+DO ,1 SUB #13 <- #140
+PLEASE READ OUT ,1
 PLEASE GIVE UP
 ```
 
@@ -2749,9 +2852,8 @@ False was the inspiration for Brainfuck. It aimed to be a functional, extremely 
 
 **File**: `src/085_hello_malbolge.mal`
 
-```bash
-# Generation Command:
-# python3 -c 'print("(=<`#9]~6ZY327Uv4-Qsqpnmjgfedcba`_^]\\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?>=<;:9876543210/.-,+*)(\x27&%$# \"! \x1f\x1e\x1d\x1c\x1b\x1a\x19\x18\x17\x16\x15\x14\x13\x12\x11\x10\x0f\x0e\x0d\x0c\x0b\x0a\x09\x08\x07\x06\x05\x04\x03\x02\x01\x00")'
+```text
+(=<`:9876Z4321UT.-Q+*)M'&%$H"!~}|Bzy?=|{z]KwZY44Eq0/{mlk**hKs_dG5[m_BA{?-Y;;Vb'rR5431M}/.zHGwEDCBA@98\6543W10/.R,+O<
 ```
 
 **Technical Profile**:
@@ -2762,7 +2864,7 @@ False was the inspiration for Brainfuck. It aimed to be a functional, extremely 
 - **Runtime/Platform**: Malbolge Interpreter.
 
 **The Story & Purpose**:
-Named after the eighth circle of Hell in Dante's _Inferno_, Malbolge was designed to be impossible to write. It is self-modifying, meaning every time a command is executed, it changes into a different command. The first "Hello World" program wasn't even written by a human—it was found by an evolutionary algorithm searching through random code.
+Named after the eighth circle of Hell in Dante's _Inferno_, Malbolge was designed to be impossible to write. It is self-modifying, meaning every time a command is executed, it changes into a different command. The first "Hello World" program wasn't even written by a human—it was found by a beam search algorithm exploring the space of possible programs.
 
 **Key Use Cases**:
 
@@ -2781,9 +2883,11 @@ Named after the eighth circle of Hell in Dante's _Inferno_, Malbolge was designe
 **File**: `src/086_hello_zombie.zombie`
 
 ```zombie
+HelloWorld is a zombie
 summon
-    shambler Hello
-    say "Hello World"
+task SayHello
+  say "Hello World"
+animate
 animate
 ```
 
@@ -2813,8 +2917,10 @@ In Zombie, your variables are "shamblers" or "ghosts" that you must "summon" and
 
 **File**: `src/087_hello_cow.cow`
 
-```python
-# python3 -c 'print("MoO " * 300)'
+```text
+MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO
+MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO MoO
+... (105 lines total)
 ```
 
 **Technical Profile**:
@@ -2844,14 +2950,14 @@ Cow is a language where every command is a variation of the word "moo" (e.g., `m
 **File**: `src/088_hello_emojicode.emojicode`
 
 ```emojicode
-?? ??
-  ?? ??Hello World??
-??
+🏁 🍇
+  😀 🔤Hello World🔤
+🍉
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: Theo Johansen (2014).
+- **Developer/Origin**: Theo Weidmann (2016).
 - **Paradigm**: Object-oriented, Esoteric.
 - **Typing**: Static, Strong.
 - **Runtime/Platform**: Emojicode Real-Time Engine (ERT).
@@ -2875,9 +2981,9 @@ Emojicode is a high-level language where all keywords are emojis. Unlike most es
 
 **File**: `src/089_hello_unlambda.unl`
 
-```unlambda
-`r``..`..`..`..`..`..`..`..`..`..`..`..`..i
-```
+~~~unlambda
+`r```````````.H.e.l.l.o. .W.o.r.l.d
+~~~
 
 **Technical Profile**:
 
@@ -2936,20 +3042,20 @@ GolfScript was designed explicitly for "Code Golfing"—the practice of writing 
 **File**: `src/091_hello_haifu.hai`
 
 ```haifu
-The sky is blue.
-The sun is shining bright.
-Hello World today.
+The world is waiting
+Hello World is what we say
+Beauty in the code
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: Various (Esoteric paradigm).
+- **Developer/Origin**: David Morgan-Mar.
 - **Paradigm**: Esoteric, Haiku-based.
 - **Typing**: None.
 - **Runtime/Platform**: Haifu Interpreter.
 
 **The Story & Purpose**:
-Haifu is an esoteric language where the source code must be a valid Haiku (5-7-5 syllable structure). The logic is derived from the "meaning" of the words and the structure of the poem. It was created to demonstrate that programming can be a form of poetry.
+Haifu is an esoteric language where the source code must be a valid Haiku (5-7-5 syllable structure). It draws on Eastern philosophy: values belong to one of five elements (Earth, Fire, Water, Wood, Metal) and carry Yin or Yang qualities instead of true and false. It was created to demonstrate that programming can be a form of poetry.
 
 **Key Use Cases**:
 
@@ -2968,7 +3074,7 @@ Haifu is an esoteric language where the source code must be a valid Haiku (5-7-5
 **File**: `src/092_hello_glass.glass`
 
 ```glass
-{M [f (Hello World) o] m}
+{M[m(_o)O!(_n)O!(_o)O!(_l)O!(_l)O!(_e)O!(_H)O!]?}
 ```
 
 **Technical Profile**:
@@ -2997,9 +3103,11 @@ Glass is an esoteric language that combines object-oriented principles with a st
 **File**: `src/093_hello_hexagony.hex`
 
 ```hexagony
-  H ; e ; l ;
- l ; o ; W ; o ;
-r ; l ; d ; ! ; @
+  H ; e ;
+ l ; d ;
+* ; r ; o
+ ; W ; l
+  ; o ;
 ```
 
 **Technical Profile**:
@@ -3028,13 +3136,13 @@ Hexagony is a two-dimensional language where the code is laid out in a hexagonal
 **File**: `src/094_hello_dogescript.doge`
 
 ```dogescript
-shrobe console
-plz console.loge with 'Hello World'
+shh this is a comment
+plz console.log with "Hello World"
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: Various.
+- **Developer/Origin**: Zach Bruggeman (2013).
 - **Paradigm**: Esoteric, Meme-based.
 - **Typing**: Dynamic.
 - **Runtime/Platform**: Compiles to JavaScript.
@@ -3059,7 +3167,7 @@ Dogescript is a language that compiles to JavaScript, using the broken English (
 **File**: `src/095_hello_zsh.z`
 
 ```zsh
-echo "Hello World"
+print "Hello World"
 ```
 
 **Technical Profile**:
@@ -3095,7 +3203,7 @@ WRITE "Hello World"
 **Technical Profile**:
 
 - **Developer/Origin**: Leo Geurts, Lambert Meertens, Steven Pemberton (1980s), CWI.
-  ABC was designed to be a replacement for BASIC—easy for non-programmers to use but much more structured. It is most famous for being the direct predecessor to Python. Guido van Rossum worked on ABC and took many of its ideas (like indentation for blocks) to create Python.
+- **Paradigm**: Imperative, Structured.
 - **Typing**: Static.
 - **Runtime/Platform**: ABC Interpreter.
 
@@ -3119,18 +3227,19 @@ ABC was designed to be a replacement for BASIC—easy for non-programmers to use
 **File**: `src/097_hello_vigil.vig`
 
 ```vigil
-say "Hello World"
+# (Vigil is Python-based but with consequences)
+print("Hello World")
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: Various (Joke paradigm).
+- **Developer/Origin**: Bob Nystrom (2013).
 - **Paradigm**: Moral Imperative.
 - **Typing**: Strict.
 - **Runtime/Platform**: Vigil Interpreter (Python-based).
 
 **The Story & Purpose**:
-Vigil is an esoteric language with a strict moral code. If your code contains an error or fails an assertion, Vigil "punishes" you by deleting your source file. It is the ultimate "high-stakes" programming language.
+Vigil is an esoteric language with a strict moral code. If your code contains an error or fails an assertion, Vigil "punishes" the offending function by deleting it from your source file. It is the ultimate "high-stakes" programming language.
 
 **Key Use Cases**:
 
@@ -3149,10 +3258,11 @@ Vigil is an esoteric language with a strict moral code. If your code contains an
 **File**: `src/098_hello_b.b`
 
 ```b
-main() {
-  putchar('hell');
-  putchar('o wo');
-  putchar('rld\n');
+main( ) {
+    putchar('H'); putchar('e'); putchar('l'); putchar('l'); putchar('o');
+    putchar(' ');
+    putchar('W'); putchar('o'); putchar('r'); putchar('l'); putchar('d');
+    putchar('*n');
 }
 ```
 
@@ -3183,14 +3293,14 @@ B was the transition between BCPL and C. It was used to develop early versions o
 
 ```algol
 BEGIN
-  print(("Hello World", newline))
+   print(("Hello World", new line))
 END
 ```
 
 **Technical Profile**:
 
 - **Developer/Origin**: Adriaan van Wijngaarden et al. (1968), IFIP.
-  Algol 68 was designed to be a rigorous, mathematically sound successor to Algol 60. It was extremely advanced, featuring operator overloading, user-defined types, and concurrency—concepts that wouldn't become mainstream for decades. It was unfortunately too complex for most compilers of the era.
+- **Paradigm**: Imperative, Procedural, Concurrent.
 - **Typing**: Static, Strong.
 - **Runtime/Platform**: Various Mainframes.
 
@@ -3213,19 +3323,19 @@ Algol 68 was designed to be a rigorous, mathematically sound successor to Algol 
 
 **File**: `src/100_hello_i_use_arch_btw.arch`
 
-```python
-# python3 -c 'print("I use arch btw\n" * 1000)'
+```text
+i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw i use arch btw ... (4230 words total)
 ```
 
 **Technical Profile**:
 
-- **Developer/Origin**: The Internet (Memes).
+- **Developer/Origin**: OverMighty (2019).
 - **Paradigm**: Esoteric, Linux-based.
 - **Typing**: Strong.
-- **Runtime/Platform**: Bash/Python script.
+- **Runtime/Platform**: I Use Arch Btw Interpreter (Brainfuck-derived).
 
 **The Story & Purpose**:
-This is the final language in the collection, dedicated to the meme that Arch Linux users always feel the need to tell everyone they use Arch. It is a performance-art language that simply outputs the meme phrase repeatedly, reflecting the obsessive nature of the Linux community.
+This is the final language in the collection, dedicated to the meme that Arch Linux users always feel the need to tell everyone they use Arch. It is a Brainfuck-style language whose commands are the words of the meme phrase (`i`, `use`, `arch`, `btw`, ...), so every program reads like someone repeating the meme over and over, reflecting the obsessive nature of the Linux community.
 
 **Key Use Cases**:
 
